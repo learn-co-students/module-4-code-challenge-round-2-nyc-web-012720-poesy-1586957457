@@ -20,6 +20,9 @@ class Poem extends React.Component {
         <p>
           <button onClick={(event) => this.props.handleFavorite(this.props.poem)}>My Favorite</button>
         </p>
+        <p>
+          <button onClick={(event) => this.props.handleDelete(this.props.poem)}>Delete</button>
+        </p>
       </div >
     );
   }

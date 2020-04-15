@@ -41,12 +41,21 @@ class App extends React.Component {
   }
   handleMyFavorite = () => {
     this.setState({ myFavToggle: !this.state.myFavToggle })
-
-
   }
+  handleDelete = (data) => {
 
+    fetch(`http://localhost:6001/poems/${data.id}`, {
+      method: "Delete"
+    })
+      .then(() => {
+        let clone = this.state.poems
+        let index = this.state.poems.indexOf(data)
+        clone.splice(index, 1)
+        this.setState({ poems: clone })
+      })
+  }
   renderMyFav = () => {
-    return <PoemsContainer poems={this.state.myFav} handleFavorite={this.handleFavorite} />
+    return <PoemsContainer poems={this.state.myFav} handleFavorite={this.handleFavorite} handleDelete={this.handleDelete} />
   }
   render() {
     console.log(this.state.myFav)
@@ -59,7 +68,7 @@ class App extends React.Component {
           </p>
           {this.state.toggle ? <NewPoemForm handleSubmit={this.handleSubmit} /> : null}
         </div>
-        {!this.state.myFavToggle ? <PoemsContainer poems={this.state.poems} handleFavorite={this.handleFavorite} /> : this.renderMyFav()}
+        {!this.state.myFavToggle ? <PoemsContainer poems={this.state.poems} handleFavorite={this.handleFavorite} handleDelete={this.handleDelete} /> : this.renderMyFav()}
       </div >
     );
   }
