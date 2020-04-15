@@ -6,7 +6,9 @@ import NewPoemForm from "./NewPoemForm";
 class App extends React.Component {
   state = {
     poems: [],
+    favPoems: [],
     formToggle: true,
+    favToggle: false,
   };
 
   componentDidMount() {
@@ -17,6 +19,10 @@ class App extends React.Component {
 
   handleFormToggle = () => {
     return this.setState({ formToggle: !this.state.formToggle });
+  };
+
+  handleFavToggle = () => {
+    return this.setState({ favToggle: !this.state.formToggle });
   };
 
   handleAdd = (newPoem) => {
@@ -31,8 +37,13 @@ class App extends React.Component {
     this.componentDidMount();
   };
 
+  handleFavorite = (favId) => {
+    let favPoem = this.state.poems.find((poem) => poem.id === favId);
+    this.setState({ favPoems: [...this.state.favPoems, favPoem] });
+  };
+
   render() {
-    // console.log(this.state.poems);
+    // console.log(this.state.favs);
     return (
       <div className="app">
         <div className="sidebar">
@@ -41,7 +52,14 @@ class App extends React.Component {
           </button>
           {this.state.formToggle && <NewPoemForm addPoem={this.handleAdd} />}
         </div>
-        <PoemsContainer poems={this.state.poems} delete={this.handleDelete} />
+        <div>
+          <button onClick={this.handleFavsToggle}>Show/hide Favorites</button>
+        </div>
+        <PoemsContainer
+          poems={!this.state.favToggle ? this.state.poems : this.state.favPoems}
+          delete={this.handleDelete}
+          favorite={this.handleFavorite}
+        />
       </div>
     );
   }

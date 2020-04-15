@@ -3,7 +3,14 @@ import Poem from "./Poem";
 
 class PoemsContainer extends React.Component {
   renderPoems = () => {
-    return this.props.poems.map((poem) => <Poem key={poem.id} {...poem} delete={this.props.delete}/>);
+    return this.props.poems.map((poem) => (
+      <Poem
+        key={poem.id}
+        {...poem}
+        delete={this.props.delete}
+        favorite={this.props.favorite}
+      />
+    ));
   };
 
   render() {

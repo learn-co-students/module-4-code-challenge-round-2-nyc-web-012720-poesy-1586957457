@@ -23,6 +23,10 @@ class Poem extends React.Component {
           {this.state.read ? "✅" : "Mark as read"}
         </button>
         <br />
+        <button onClick={() => this.props.favorite(this.props.id)}>
+          ♥️Add to Favorites
+        </button>
+        <br />
         <button onClick={() => this.props.delete(this.props.id)}>Delete</button>
       </div>
     );
