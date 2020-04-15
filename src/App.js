@@ -64,7 +64,7 @@ class App extends React.Component {
         <div className="sidebar">
           <button onClick={this.handleClick}> Show/hide new poem form</button>
           <p>
-            <button onClick={this.handleMyFavorite}>My Favorite</button>
+            <button onClick={this.handleMyFavorite}>{!this.state.myFavToggle ? "My Favorite" : "Show all List"}</button>
           </p>
           {this.state.toggle ? <NewPoemForm handleSubmit={this.handleSubmit} /> : null}
         </div>
