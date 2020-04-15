@@ -17,7 +17,10 @@ class Poem extends React.Component {
           <strong>- By Author: {author}</strong>
         </p>
         <button onClick={this.handleClick}>{this.state.toggle ? "Mark as read" : "Mark as unread"}</button>
-      </div>
+        <p>
+          <button onClick={(event) => this.props.handleFavorite(this.props.poem)}>My Favorite</button>
+        </p>
+      </div >
     );
   }
 }
