@@ -25,7 +25,7 @@ class App extends React.Component {
       body: JSON.stringify({ ...data })
     })
       .then(response => response.json())
-      .then(() => this.setState({ poem: [...this.state.poem, data] }))
+      .then(() => this.setState({ poems: [...this.state.poems, data] }))
   }
   handleClick = () => {
     this.setState({ toggle: !this.state.toggle })
@@ -37,7 +37,7 @@ class App extends React.Component {
           <button onClick={this.handleClick}> Show/hide new poem form</button>
           {this.state.toggle ? <NewPoemForm handleSubmit={this.handleSubmit} /> : null}
         </div>
-        <PoemsContainer />
+        <PoemsContainer poems={this.state.poems} />
       </div>
     );
   }
