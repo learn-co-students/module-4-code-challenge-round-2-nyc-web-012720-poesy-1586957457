@@ -10,7 +10,7 @@ class Poem extends React.Component {
   };
 
   render() {
-    console.log(this.props.id);
+    // console.log(this.props.id);
     const { title, author, content } = this.props;
     return (
       <div>

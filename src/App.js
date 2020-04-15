@@ -43,7 +43,7 @@ class App extends React.Component {
   };
 
   render() {
-    // console.log(this.state.favs);
+    console.log(this.state.favToggle);
     return (
       <div className="app">
         <div className="sidebar">

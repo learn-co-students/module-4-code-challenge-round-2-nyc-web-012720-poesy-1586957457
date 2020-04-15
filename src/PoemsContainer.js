@@ -14,7 +14,7 @@ class PoemsContainer extends React.Component {
   };
 
   render() {
-    console.log(this.props.poems);
+    // console.log(this.props.poems);
     return <div className="poems-container">{this.renderPoems()}</div>;
   }
 }
