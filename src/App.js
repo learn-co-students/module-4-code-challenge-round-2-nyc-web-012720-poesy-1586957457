@@ -21,7 +21,7 @@ class App extends React.Component {
     return this.setState({ formToggle: !this.state.formToggle });
   };
 
-  handleFavToggle = () => {
+  handleFavsToggle = () => {
     return this.setState({ favToggle: !this.state.formToggle });
   };
 
